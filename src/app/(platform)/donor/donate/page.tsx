@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -40,7 +40,7 @@ const emptyItem: DonationItem = {
   category: "", type: "", season: "", condition: "", size: "", quantity: 1, description: "",
 };
 
-export default function DonatePage() {
+function DonatePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [step, setStep] = useState(1);
@@ -332,5 +332,13 @@ export default function DonatePage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function DonatePage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-[60vh]"><Loader2 className="w-8 h-8 animate-spin text-emerald-500" /></div>}>
+      <DonatePageContent />
+    </Suspense>
   );
 }
