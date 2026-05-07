@@ -1,0 +1,227 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ─── USERS ───────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  passwordHash  String
+  phone         String?
+  role          String    @default("DONOR") // DONOR | NGO_ADMIN | PLATFORM_ADMIN
+  avatar        String?
+  isActive      Boolean   @default(true)
+  emailVerified Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  donorProfile  DonorProfile?
+  ngoAdmin      NGO?          @relation("NGOAdmin")
+  donations     Donation[]    @relation("DonorDonations")
+  reviews       Review[]
+  notifications Notification[]
+  statusUpdates StatusUpdate[]
+}
+
+// ─── DONOR PROFILE ───────────────────────────────────────
+
+model DonorProfile {
+  id              String  @id @default(cuid())
+  userId          String  @unique
+  city            String
+  address         String?
+  latitude        Float?
+  longitude       Float?
+  totalDonations  Int     @default(0)
+  totalItems      Int     @default(0)
+  impactScore     Float   @default(0)
+  preferredNGOs   String  @default("[]") // JSON array of NGO IDs
+  badges          String  @default("[]") // JSON array of badge strings
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── NGO ─────────────────────────────────────────────────
+
+model NGO {
+  id                 String   @id @default(cuid())
+  adminId            String   @unique
+  name               String
+  slug               String   @unique
+  description        String
+  descriptionUrdu    String?
+  logo               String?
+  coverImage         String?
+  registrationNumber String?
+  foundedYear        Int?
+  website            String?
+  phone              String?
+  email              String?
+  isVerified         Boolean  @default(false)
+  verifiedAt         DateTime?
+
+  // Location
+  city      String
+  address   String
+  latitude  Float?
+  longitude Float?
+
+  // Capacity
+  currentNeeds   String @default("{}") // JSON object of needs
+  operatingHours String @default("Mon-Sat 9AM-5PM")
+  acceptsPickup  Boolean @default(true)
+  pickupRadius   Int     @default(10) // in km
+
+  // Stats
+  totalReceived    Int   @default(0)
+  totalDistributed Int   @default(0)
+  rating           Float @default(0)
+  reviewCount      Int   @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  admin      User         @relation("NGOAdmin", fields: [adminId], references: [id])
+  donations  Donation[]
+  campaigns  Campaign[]
+  reviews    Review[]
+}
+
+// ─── DONATION ────────────────────────────────────────────
+
+model Donation {
+  id           String   @id @default(cuid())
+  donorId      String
+  ngoId        String
+  status       String   @default("PENDING") // PENDING | SCHEDULED | PICKED_UP | IN_TRANSIT | RECEIVED | SORTED | DISTRIBUTED | REJECTED
+  pickupMethod String   @default("DONOR_DROPOFF") // DONOR_DROPOFF | NGO_PICKUP | COURIER
+
+  // Scheduling
+  scheduledDate     DateTime?
+  scheduledTimeSlot String?
+  pickupAddress     String?
+  pickupLatitude    Float?
+  pickupLongitude   Float?
+
+  // Content
+  totalItems Int     @default(0)
+  notes      String?
+  images     String  @default("[]") // JSON array of image URLs
+
+  // Tracking
+  trackingCode String @unique
+
+  // Feedback
+  donorRating   Int?
+  donorFeedback String?
+  ngoNotes      String?
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  completedAt DateTime?
+
+  donor         User           @relation("DonorDonations", fields: [donorId], references: [id])
+  ngo           NGO            @relation(fields: [ngoId], references: [id])
+  items         DonationItem[]
+  statusHistory StatusUpdate[]
+  review        Review?
+}
+
+// ─── DONATION ITEM ───────────────────────────────────────
+
+model DonationItem {
+  id         String @id @default(cuid())
+  donationId String
+  category   String // MENS | WOMENS | KIDS_BOYS | KIDS_GIRLS | INFANT | UNISEX
+  type       String // SHIRT | PANTS | SHALWAR_KAMEEZ | DUPATTA | JACKET | SWEATER | SHAWL | BLANKET | SHOES | OTHER
+  season     String // SUMMER | WINTER | ALL_SEASON
+  condition  String // NEW | LIKE_NEW | GOOD | FAIR
+  size       String // XS | S | M | L | XL | XXL | FREE_SIZE
+  quantity   Int    @default(1)
+  description String?
+  imageUrl   String?
+
+  // Distribution tracking
+  isDistributed  Boolean   @default(false)
+  distributedAt  DateTime?
+  beneficiaryNote String?
+
+  donation Donation @relation(fields: [donationId], references: [id], onDelete: Cascade)
+}
+
+// ─── CAMPAIGN ────────────────────────────────────────────
+
+model Campaign {
+  id            String   @id @default(cuid())
+  ngoId         String
+  title         String
+  titleUrdu     String?
+  description   String
+  coverImage    String?
+  targetItems   Int      @default(0)
+  collectedItems Int     @default(0)
+  startDate     DateTime
+  endDate       DateTime
+  isActive      Boolean  @default(true)
+  clothingNeeds String   @default("{}") // JSON of specific needs
+  city          String
+  urgencyLevel  String   @default("MEDIUM") // LOW | MEDIUM | HIGH | CRITICAL
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ngo NGO @relation(fields: [ngoId], references: [id], onDelete: Cascade)
+}
+
+// ─── REVIEW ──────────────────────────────────────────────
+
+model Review {
+  id         String   @id @default(cuid())
+  donorId    String
+  ngoId      String
+  donationId String   @unique
+  rating     Int      // 1-5
+  comment    String?
+  createdAt  DateTime @default(now())
+
+  donor    User     @relation(fields: [donorId], references: [id])
+  ngo      NGO      @relation(fields: [ngoId], references: [id])
+  donation Donation @relation(fields: [donationId], references: [id])
+}
+
+// ─── NOTIFICATION ────────────────────────────────────────
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  type      String   @default("INFO") // INFO | SUCCESS | WARNING | DONATION_UPDATE
+  isRead    Boolean  @default(false)
+  actionUrl String?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── STATUS UPDATE ───────────────────────────────────────
+
+model StatusUpdate {
+  id         String   @id @default(cuid())
+  donationId String
+  fromStatus String
+  toStatus   String
+  note       String?
+  updatedById String
+  createdAt  DateTime @default(now())
+
+  donation  Donation @relation(fields: [donationId], references: [id], onDelete: Cascade)
+  updatedBy User     @relation(fields: [updatedById], references: [id])
+}
