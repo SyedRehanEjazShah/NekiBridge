@@ -24,8 +24,8 @@ const team = [
 
 const stats = [
   { value: "15+", label: "Verified NGOs" },
-  { value: "20+", label: "Cities Covered" },
-  { value: "12,000+", label: "Items Donated" },
+  { value: "8+", label: "Cities Covered" },
+  { value: "350+", label: "Items Donated" },
   { value: "100%", label: "Free Platform" },
 ];
 

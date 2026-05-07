@@ -5,10 +5,10 @@ import { motion, useInView } from "framer-motion";
 import { Users, Building2, MapPin, Shirt } from "lucide-react";
 
 const stats = [
-  { icon: Shirt, value: 12450, suffix: "+", label: "Clothes Donated", labelUrdu: "لباس عطیہ" },
+  { icon: Shirt, value: 350, suffix: "+", label: "Clothes Donated", labelUrdu: "لباس عطیہ" },
   { icon: Building2, value: 15, suffix: "+", label: "Partner NGOs", labelUrdu: "شراکت دار ادارے" },
-  { icon: MapPin, value: 20, suffix: "+", label: "Cities Covered", labelUrdu: "شہر" },
-  { icon: Users, value: 3200, suffix: "+", label: "Happy Donors", labelUrdu: "خوش عطیہ دہندگان" },
+  { icon: MapPin, value: 8, suffix: "+", label: "Cities Covered", labelUrdu: "شہر" },
+  { icon: Users, value: 120, suffix: "+", label: "Happy Donors", labelUrdu: "خوش عطیہ دہندگان" },
 ];
 
 function AnimatedCounter({ target, duration = 2 }: { target: number; duration?: number }) {

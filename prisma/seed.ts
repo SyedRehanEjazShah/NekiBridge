@@ -74,7 +74,7 @@ async function main() {
       latitude: 24.8607, longitude: 67.0011,
       website: "https://edhi.org", phone: "+92-21-111-1330", email: "info@edhi.org",
       foundedYear: 1951, registrationNumber: "REG-001-KHI",
-      isVerified: true, rating: 4.9, reviewCount: 1240, totalReceived: 58000, totalDistributed: 45000,
+      isVerified: true, rating: 4.9, reviewCount: 24, totalReceived: 120, totalDistributed: 85,
       currentNeeds: JSON.stringify({ BLANKET: "HIGH", JACKET: "HIGH", SWEATER: "MEDIUM", SHALWAR_KAMEEZ: "LOW" }),
     },
     {
@@ -86,7 +86,7 @@ async function main() {
       latitude: 31.4697, longitude: 74.2728,
       website: "https://akhuwat.org.pk", phone: "+92-42-35170202", email: "info@akhuwat.org.pk",
       foundedYear: 2001, registrationNumber: "REG-002-LHR",
-      isVerified: true, rating: 4.8, reviewCount: 890, totalReceived: 42000, totalDistributed: 32000,
+      isVerified: true, rating: 4.8, reviewCount: 18, totalReceived: 95, totalDistributed: 62,
       currentNeeds: JSON.stringify({ SHALWAR_KAMEEZ: "HIGH", SHOES: "HIGH", SHIRT: "MEDIUM" }),
     },
     {
@@ -98,7 +98,7 @@ async function main() {
       latitude: 33.7077, longitude: 73.0498,
       website: "https://alkhidmat.org", phone: "+92-51-2890825", email: "info@alkhidmat.org",
       foundedYear: 1990, registrationNumber: "REG-003-ISB",
-      isVerified: true, rating: 4.7, reviewCount: 670, totalReceived: 35000, totalDistributed: 28000,
+      isVerified: true, rating: 4.7, reviewCount: 12, totalReceived: 78, totalDistributed: 48,
       currentNeeds: JSON.stringify({ SWEATER: "HIGH", SHAWL: "HIGH", JACKET: "MEDIUM", BLANKET: "CRITICAL" }),
     },
     {
@@ -110,7 +110,7 @@ async function main() {
       latitude: 24.9215, longitude: 67.0934,
       website: "https://chhipa.org", phone: "+92-21-111-92-1020", email: "info@chhipa.org",
       foundedYear: 2007, registrationNumber: "REG-004-KHI",
-      isVerified: true, rating: 4.8, reviewCount: 540, totalReceived: 28000, totalDistributed: 21000,
+      isVerified: true, rating: 4.8, reviewCount: 9, totalReceived: 55, totalDistributed: 35,
       currentNeeds: JSON.stringify({ SHIRT: "MEDIUM", PANTS: "MEDIUM", BLANKET: "HIGH" }),
     },
     {
@@ -122,7 +122,7 @@ async function main() {
       latitude: 31.4828, longitude: 74.3151,
       website: "https://baitussalam.org", phone: "+92-42-35940090", email: "info@baitussalam.org",
       foundedYear: 2003, registrationNumber: "REG-005-LHR",
-      isVerified: true, rating: 4.6, reviewCount: 420, totalReceived: 22000, totalDistributed: 17000,
+      isVerified: true, rating: 4.6, reviewCount: 7, totalReceived: 40, totalDistributed: 28,
       currentNeeds: JSON.stringify({ DUPATTA: "MEDIUM", SHALWAR_KAMEEZ: "HIGH" }),
     },
     {
@@ -134,7 +134,7 @@ async function main() {
       latitude: 24.8682, longitude: 67.0578,
       website: "https://jdcwelfare.org", phone: "+92-21-34526737", email: "info@jdcwelfare.org",
       foundedYear: 2009, registrationNumber: "REG-006-KHI",
-      isVerified: true, rating: 4.5, reviewCount: 350, totalReceived: 18000, totalDistributed: 14000,
+      isVerified: true, rating: 4.5, reviewCount: 6, totalReceived: 32, totalDistributed: 22,
       currentNeeds: JSON.stringify({ SHIRT: "LOW", SHOES: "HIGH", BLANKET: "MEDIUM" }),
     },
     {
@@ -146,7 +146,7 @@ async function main() {
       latitude: 24.9425, longitude: 67.0353,
       website: "https://shauoor.org.pk", phone: "+92-21-36635600", email: "info@shauoor.org.pk",
       foundedYear: 2012, registrationNumber: "REG-007-KHI",
-      isVerified: true, rating: 4.4, reviewCount: 280, totalReceived: 15000, totalDistributed: 11500,
+      isVerified: true, rating: 4.4, reviewCount: 5, totalReceived: 25, totalDistributed: 18,
       currentNeeds: JSON.stringify({ SHALWAR_KAMEEZ: "MEDIUM", SHAWL: "HIGH" }),
     },
     {
@@ -158,7 +158,7 @@ async function main() {
       latitude: 34.0123, longitude: 71.5785,
       website: "https://tarsfoundation.org.pk", phone: "+92-91-5842200", email: "info@tarsfoundation.org.pk",
       foundedYear: 2015, registrationNumber: "REG-008-PSH",
-      isVerified: true, rating: 4.3, reviewCount: 190, totalReceived: 9000, totalDistributed: 7200,
+      isVerified: true, rating: 4.3, reviewCount: 4, totalReceived: 20, totalDistributed: 14,
       currentNeeds: JSON.stringify({ JACKET: "CRITICAL", BLANKET: "CRITICAL", SWEATER: "HIGH" }),
     },
     {
@@ -170,7 +170,7 @@ async function main() {
       latitude: 24.8918, longitude: 67.0645,
       website: "https://saylani.org", phone: "+92-21-111-729-526", email: "info@saylani.org",
       foundedYear: 1999, registrationNumber: "REG-009-KHI",
-      isVerified: true, rating: 4.7, reviewCount: 950, totalReceived: 40000, totalDistributed: 33000,
+      isVerified: true, rating: 4.7, reviewCount: 15, totalReceived: 85, totalDistributed: 58,
       currentNeeds: JSON.stringify({ SHIRT: "MEDIUM", PANTS: "MEDIUM", SHOES: "HIGH" }),
     },
     {
@@ -182,7 +182,7 @@ async function main() {
       latitude: 24.9256, longitude: 67.0867,
       website: "https://alamgirwelfaretrust.org", phone: "+92-21-34963010", email: "info@alamgirwelfaretrust.org",
       foundedYear: 1992, registrationNumber: "REG-010-KHI",
-      isVerified: true, rating: 4.5, reviewCount: 310, totalReceived: 16000, totalDistributed: 12500,
+      isVerified: true, rating: 4.5, reviewCount: 5, totalReceived: 28, totalDistributed: 20,
       currentNeeds: JSON.stringify({ SHALWAR_KAMEEZ: "HIGH", SHOES: "MEDIUM" }),
     },
     {
@@ -194,7 +194,7 @@ async function main() {
       latitude: 33.6938, longitude: 73.0479,
       website: "https://pakistansweethome.org.pk", phone: "+92-51-2261026", email: "info@psh.org.pk",
       foundedYear: 2009, registrationNumber: "REG-011-ISB",
-      isVerified: true, rating: 4.6, reviewCount: 380, totalReceived: 20000, totalDistributed: 16500,
+      isVerified: true, rating: 4.6, reviewCount: 8, totalReceived: 45, totalDistributed: 30,
       currentNeeds: JSON.stringify({ SHIRT: "HIGH", PANTS: "HIGH", SHOES: "CRITICAL", JACKET: "MEDIUM" }),
     },
     {
@@ -206,7 +206,7 @@ async function main() {
       latitude: 31.4800, longitude: 74.3200,
       website: "https://almustafatrust.org", phone: "+92-42-35452886", email: "info@almustafatrust.org",
       foundedYear: 2008, registrationNumber: "REG-012-LHR",
-      isVerified: true, rating: 4.4, reviewCount: 250, totalReceived: 12000, totalDistributed: 9500,
+      isVerified: true, rating: 4.4, reviewCount: 4, totalReceived: 22, totalDistributed: 15,
       currentNeeds: JSON.stringify({ BLANKET: "MEDIUM", SWEATER: "LOW" }),
     },
     {
@@ -218,7 +218,7 @@ async function main() {
       latitude: 31.5200, longitude: 74.3500,
       website: "https://rizq.com.pk", phone: "+92-42-35761000", email: "info@rizq.com.pk",
       foundedYear: 2014, registrationNumber: "REG-013-LHR",
-      isVerified: false, rating: 4.2, reviewCount: 150, totalReceived: 5000, totalDistributed: 3800,
+      isVerified: false, rating: 4.2, reviewCount: 3, totalReceived: 12, totalDistributed: 8,
       currentNeeds: JSON.stringify({ JACKET: "MEDIUM", SHAWL: "MEDIUM" }),
     },
     {
@@ -230,7 +230,7 @@ async function main() {
       latitude: 31.4750, longitude: 74.2900,
       website: "https://sundasfoundation.com", phone: "+92-42-35160256", email: "info@sundasfoundation.com",
       foundedYear: 1998, registrationNumber: "REG-014-LHR",
-      isVerified: false, rating: 4.1, reviewCount: 120, totalReceived: 4000, totalDistributed: 3200,
+      isVerified: false, rating: 4.1, reviewCount: 2, totalReceived: 8, totalDistributed: 5,
       currentNeeds: JSON.stringify({ SHALWAR_KAMEEZ: "LOW", DUPATTA: "LOW" }),
     },
     {
@@ -242,7 +242,7 @@ async function main() {
       latitude: 31.5100, longitude: 74.3400,
       website: "https://kashf.org", phone: "+92-42-35772015", email: "info@kashf.org",
       foundedYear: 1996, registrationNumber: "REG-015-LHR",
-      isVerified: false, rating: 4.0, reviewCount: 90, totalReceived: 3000, totalDistributed: 2400,
+      isVerified: false, rating: 4.0, reviewCount: 1, totalReceived: 6, totalDistributed: 4,
       currentNeeds: JSON.stringify({ DUPATTA: "HIGH", SHALWAR_KAMEEZ: "MEDIUM", SHOES: "LOW" }),
     },
   ];
